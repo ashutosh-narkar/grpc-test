@@ -1,0 +1,16 @@
+{
+  "verbose": true,
+  "listen": "localhost:50051",
+  "backends": [
+    {
+      "backend": "istio-mixer.istio-system:15004",
+      "backendName": "Mixer",
+      "filter": "/istio.mixer.v1.Mixer/Report"
+    },
+    {
+      "backend": "localhost:50051",
+      "backendName": "Mixer",
+      "filter": "/istio.mixer.v1.Mixer/Check"
+    }   
+  ]
+}
