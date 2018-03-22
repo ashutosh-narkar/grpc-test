@@ -10,10 +10,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	authz "github.com/envoyproxy/data-plane-api/api/auth"
 	"github.com/grpc-proxy/proxy"
 	"github.com/grpc-test/server"
 	"github.com/grpc-test/utils"
+	mixerpb "github.com/istio-api/mixer/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -48,7 +48,7 @@ func main() {
 		log.Fatalf("Unable to start server %v", err)
 	}
 
-	authz.RegisterAuthorizationServer(grpcServer, authzServer)
+	mixerpb.RegisterMixerServer(grpcServer, authzServer)
 	reflection.Register(grpcServer)
 
 	// Run gRPC server on separate goroutine

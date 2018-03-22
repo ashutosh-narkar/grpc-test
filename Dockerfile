@@ -15,7 +15,6 @@ EXPOSE 50051
 RUN apt-get update && apt-get install -y curl
 
 # Install vim
-RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "vim"]
 
 ENTRYPOINT ["./grpc-proxy"]
